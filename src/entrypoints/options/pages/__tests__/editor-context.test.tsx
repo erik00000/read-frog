@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider"
 import { isAPIProviderConfig } from "@/types/config/provider"
 import { configAtom } from "@/utils/atoms/config"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"
+import { DEFAULT_PROVIDER_CONFIG } from "@/utils/constants/providers"
 import { BUILT_IN_DICTIONARY_ACTION_ID } from "@/utils/constants/custom-action"
 import { BUILT_IN_AI_PROVIDER_ID } from "@/utils/constants/provider-ids"
 import { getBuiltInDictionaryAction } from "@/utils/custom-actions"
@@ -164,8 +165,11 @@ describe("editor compound component contexts", () => {
   it("assigns an action and enables a disabled custom provider through context actions", async () => {
     const store = createConfigStore()
     const config = structuredClone(store.get(configAtom))
+    // 二次开发后新装 profile 只播种三个豆包 provider（纯翻译）；这条用例要测的是
+    // 「启用一个被禁用的自定义 provider」，所以显式注册一个带模型的 provider。
+    config.providersConfig = [...config.providersConfig, structuredClone(DEFAULT_PROVIDER_CONFIG.openai)]
     const providerConfig = config.providersConfig.find(
-      (provider) => provider.id === "openai-default",
+      (provider) => provider.id === DEFAULT_PROVIDER_CONFIG.openai.id,
     )
     if (!providerConfig || !isAPIProviderConfig(providerConfig)) {
       throw new Error("Expected the default OpenAI provider")
