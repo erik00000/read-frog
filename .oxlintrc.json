@@ -23,6 +23,7 @@
     "**/.turbo/**",
     "repos/**",
     "scripts/output/**",
+    "doubao-worker/**",
     ".agents/**",
     ".claude/**",
     ".codex/**",

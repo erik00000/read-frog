@@ -1,0 +1,8 @@
+name = "doubao-translate"
+main = "src/index.js"
+compatibility_date = "2026-10-07"
+
+# 未在请求里显式指定 target_lang 时使用的默认目标语言。
+# 可被请求体里的 target_lang 或请求头 x-doubao-target-lang 覆盖。
+[vars]
+DOUBAO_DEFAULT_TARGET_LANG = "zh"

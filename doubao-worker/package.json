@@ -1,0 +1,14 @@
+{
+  "name": "doubao-translate-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "把豆包的 stream_article_translate 接口包装成 OpenAI 兼容的 /v1/chat/completions",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.148.0"
+  }
+}
