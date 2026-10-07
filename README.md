@@ -1,366 +1,201 @@
-<div align="center"><a name="readme-top"></a>
-
-[![Read Frog banner][image-banner]][website]
-
-<p align="center">
-  <a href="https://trendshift.io/repositories/22377" target="_blank"><img src="https://trendshift.io/api/badge/repositories/22377" alt="mengxi-ream%2Fread-frog | Trendshift" width="250" height="55" /></a>
-  <a href="https://www.star-history.com/mengxi-ream/read-frog">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=mengxi-ream/read-frog&theme=dark" />
-      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=mengxi-ream/read-frog" />
-      <img alt="Star History Rank" src="https://api.star-history.com/badge?repo=mengxi-ream/read-frog" width="260" height="55" />
-    </picture>
-  </a>
-</p>
-
-An open-source AI-powered language learning extension for browsers.<br/>
-Supports immersive translation, article analysis, multiple AI models, and more.<br/>
-Master languages effortlessly and deeply with AI, right in your browser.
-
-[![English][english-shield]](./README.md) [![简体中文][chinese-shield]](./readmes/README.zh-CN.md) [![繁體中文][traditional-chinese-shield]](./readmes/README.zh-TW.md) [![日本語][japanese-shield]](./readmes/README.ja.md) [![한국어][korean-shield]](./readmes/README.ko.md) [![Español][spanish-shield]](./readmes/README.es.md) [![Русский][russian-shield]](./readmes/README.ru.md) [![Türkçe][turkish-shield]](./readmes/README.tr.md) [![Tiếng Việt][vietnamese-shield]](./readmes/README.vi.md)
-
-[Official Website](https://readfrog.app) · [Tutorial](https://www.readfrog.app/docs) · [Changelog][github-release-link] · [Blog](https://www.readfrog.app/blog)
-
-<!-- SHIELD GROUP -->
-
-[![Latest Version badge][extension-release-shield]][github-release-link]
-[![Chrome Version badge][chrome-version-shield]][chrome-store-link]
-[![Edge Version badge][edge-version-shield]][edge-store-link]
-[![Firefox Version badge][firefox-version-shield]][firefox-store-link]<br/>
-[![Discord badge][discord-shield]][discord-link]
-[![Chrome Users badge][chrome-users-shield]][chrome-store-link]
-[![Edge Users badge][edge-users-shield]][edge-store-link]
-[![Firefox Users badge][firefox-users-shield]][firefox-store-link]<br/>
-[![Stars badge][star-history-shield]][star-history-link]
-[![Contributors badge][contributors-shield]][contributors-link]
-![Last Commit badge][last-commit-shield]
-[![Issues badge][issues-shield]][issues-link]<br/>
-[![Sponsor badge][sponsor-shield]][sponsor-link]
-
-</div>
-
-<details>
-<summary><kbd>Table of contents</kbd></summary>
-
-#### TOC
-
-- [📺 Demo](#-demo)
-- [👋🏻 Getting Started \& Join Our Community](#-getting-started--join-our-community)
-  - [Download](#download)
-  - [Community](#community)
-- [✨ Features](#-features)
-  - [🔄 Bilingual / Translation Only](#-bilingual--translation-only)
-  - [✨ Selection Translation](#-selection-translation)
-  - [🧠 Context-Aware Translation](#-context-aware-translation)
-  - [🎬 Subtitle Translation](#-subtitle-translation)
-  - [🔊 Text-to-Speech (TTS)](#-text-to-speech-tts)
-  - [📦 Batch Requests](#-batch-requests)
-  - [🤖 20+ AI Providers](#-20-ai-providers)
-- [🤝 Contribute](#-contribute)
-  - [Contribute Code](#contribute-code)
-- [📜 Commercial License Grant](#-commercial-license-grant)
-- [❤️ Sponsors](#️-sponsors)
-
-<br/>
-
-</details>
-
-## 📺 Demo
-
 <div align="center">
-  <img src="assets/node-translation-demo.gif" width="38%" alt="Read Frog Popup Interface" />
-  <img src="assets/page-translation-demo.gif" width="60%" alt="Read Frog Translation Interface" />
+  <img src="./public/icon/128.png" alt="logo" width="96" />
+  <h1>read-frog · 豆包改版</h1>
+  <p>
+    把 <a href="https://github.com/mengxi-ream/read-frog">read-frog</a> 裁剪成<strong>只做豆包翻译</strong>的版本<br/>
+    用你自己的豆包账号登录态，直连豆包官方的文章翻译接口
+  </p>
+  <p>
+    <a href="https://github.com/erik00000/read-frog/releases"><img alt="Release" src="https://img.shields.io/github/v/release/erik00000/read-frog?label=download&color=blue" /></a>
+    <a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/license-GPL--3.0-blue" /></a>
+  </p>
 </div>
 
-## 👋🏻 Getting Started & Join Our Community
+---
 
-Read Frog's vision is to provide an easy-to-use, intelligent, and personalized language learning experience for language learners of all levels. This has become possible in the AI era, but there are few products on the market that meet this demand. Therefore, we decided to take matters into our own hands and ultimately make the world no longer reliant on human language instructors.
-
-Whether you are a user or a developer, Read Frog will be an important part of your journey toward this vision. Please be aware that Read Frog is currently under active development, and feedback is welcome for any [issues][issues-link] encountered.
-
-### Download
-
-| Browser | Version                                                                | Download                                                          |
-| ------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Chrome  | [![Chrome Version badge][chrome-version-shield]][chrome-store-link]    | [Chrome Web Store][chrome-store-link] or [中国镜像][crxsoso-link] |
-| Edge    | [![Edge Version badge][edge-version-shield]][edge-store-link]          | [Microsoft Edge Addons][edge-store-link]                          |
-| Firefox | [![Firefox Version badge][firefox-version-shield]][firefox-store-link] | [Firefox Add-ons][firefox-store-link]                             |
-
-### Community
-
-| [![Discord badge][discord-shield-badge]][discord-link] | In Discord ask questions, and connect with developers.                                 |
-| :----------------------------------------------------- | :------------------------------------------------------------------------------------- |
-| [![WeChat badge][wechat-shield-badge]][wechat-link]    | If you are in mainland China, you can add the WeChat account to join the WeChat group. |
-
-> \[!IMPORTANT]
+> ⚠️ **这是二次开发版，不是官方 read-frog。**
 >
-> **⭐️ Star Us**, You will receive all release notifications from GitHub without any delay \~
+> 原版项目请见 [mengxi-ream/read-frog](https://github.com/mengxi-ream/read-frog)
+> —— 它功能完整，支持 20+ AI 服务商、视频字幕翻译、语音朗读、自定义 AI 动作、
+> 单词卡等。**本仓库把这些都砍掉了，只保留豆包翻译。**
+>
+> 想要原版去上游；想要「用豆包账号直接翻译」用这个。
+
+---
 
-[![Star Read Frog on GitHub][image-star]][github-star-link]
+## 这是什么
 
-<details>
-<summary>
-  <kbd>Star History</kbd>
-</summary>
+read-frog 原本是一个 AI 语言学习 / 沉浸式翻译扩展。这个改版做了一件事：
 
-<a href="https://www.star-history.com/?type=timeline&repos=mengxi-ream%2Fread-frog">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=mengxi-ream/read-frog&type=timeline&theme=dark&legend=top-left&sealed_token=vUW24BwE2sgnq-CzlWEAT6gnzZqNrXl9ai4A05Pc3CQcPGdBqbts3tq5VRWEerfrqVdonsJasb04WcKd5AKSSCjlsdj_TwyI3j9xytMG4FQNw7yXDe9IUA" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=mengxi-ream/read-frog&type=timeline&legend=top-left&sealed_token=vUW24BwE2sgnq-CzlWEAT6gnzZqNrXl9ai4A05Pc3CQcPGdBqbts3tq5VRWEerfrqVdonsJasb04WcKd5AKSSCjlsdj_TwyI3j9xytMG4FQNw7yXDe9IUA" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=mengxi-ream/read-frog&type=timeline&legend=top-left&sealed_token=vUW24BwE2sgnq-CzlWEAT6gnzZqNrXl9ai4A05Pc3CQcPGdBqbts3tq5VRWEerfrqVdonsJasb04WcKd5AKSSCjlsdj_TwyI3j9xytMG4FQNw7yXDe9IUA" />
- </picture>
-</a>
+**把翻译能力收敛到豆包一家** —— 直接调用豆包网页版自己用的文章翻译接口，
+用你浏览器里的豆包登录 Cookie 鉴权，不需要 API Key、不需要付费。
 
-</details>
+```
+扩展 ──credentials: include──▶ www.doubao.com
+                               /samantha/plugin/stream_article_translate
+```
 
-<div align="right">
+## 快速开始
+
+> 目前只支持 **Chrome / Edge**（Manifest V3 + service worker）。
+> Firefox 需要自行重新构建（见下方「从源码构建」）。
 
-[![Back to top][back-to-top]](#readme-top)
+1. 到 [Releases](https://github.com/erik00000/read-frog/releases) 下载
+   `read-frog-doubao-chrome-mv3-1.47.4.7z`，解压到任意目录
+2. Chrome 打开 `chrome://extensions/`（Edge 是 `edge://extensions/`）
+3. 打开右上角 **开发者模式**
+4. 点 **加载已解压的扩展程序**，选择解压出来的 `chrome-mv3` 目录
 
-</div>
+## 使用
 
-## ✨ Features
+1. **在同一个浏览器里**登录 <https://www.doubao.com/chat/>
+2. 点扩展图标 → **豆包账号** → 点 **获取 Cookie**
+   - 看到「**已登录（鉴权有效）**」就成功了；下面会列出命中的必需 Cookie
+3. 打开任意网页：
+   - 点扩展图标里的翻译开关 → **整页双语翻译**
+   - 选中文字 → **划词翻译**
+   - 悬停在段落上 → **悬停翻译**
 
-Transform your everyday web reading into an immersive language learning journey with Read Frog's powerful features.
+> Cookie 是 httpOnly 的，页面 JS 拿不到，所以必须由扩展在浏览器层读取。
+> 采集到的 Cookie 只存在本地扩展存储里，不会上传到任何服务器。
 
-### 🪄 [Custom AI Actions][docs-tutorial]
+### Cookie 过期了怎么办
 
-Turn selected text into reusable AI tools that match the way you read and learn. Define your own prompts and structured output fields, choose a provider, model, and icon, then run the action directly from the selection toolbar for dictionary lookups, rewriting, summaries, explanations, or any workflow you design.
+豆包返回 `710012001` 就说明登录态失效了。回到「豆包账号」页点一次
+**获取 Cookie** 即可，不用重装扩展。
 
-Start with the built-in **Dictionary** and **Improve Writing** templates, or build an action from scratch. Structured results can also be mapped and saved to Notebase for later study.
+### 想要手动导入 Cookie
 
-<div align="right">
+「豆包账号」页底部可以粘贴 Cookie（支持 `Cookie:` 整行、`Set-Cookie`、
+Cookie-Editor 导出的 JSON 数组）。必需字段是
+**`sessionid`、`sid_tt`、`uid_tt`** 三条。
 
-[![Back to top][back-to-top]](#readme-top)
+> ⚠️ 「同时写入浏览器 Cookie」开关默认关闭。打开它会**覆盖本浏览器同名的豆包
+> Cookie**，包括你当前的登录态。除非确实需要，别开。
 
-</div>
+## 三个翻译引擎
 
-### 🧠 [Flashcards & Spaced Repetition][docs-tutorial]
+三个服务共用同一份豆包登录态，区别只是底层引擎：
 
-Save vocabulary, definitions, example sentences, translations, and reading notes to Notebase, then turn them into flashcards with customizable card templates. Content you discover while reading becomes study material without interrupting your flow.
+| 服务 | `translate_service` | 特点 |
+|---|---|---|
+| 火山引擎 | `"0"` | 机器翻译，速度最快，适合日常网页 |
+| **豆包 AI**（默认） | `"1"` | 豆包大模型驱动，论文与专业文档更准 |
+| 微软 | `"3"` | 微软翻译 |
 
-Review due cards online and rate each one **Again**, **Hard**, **Good**, or **Easy**. Read Frog's spaced-repetition scheduler uses your feedback to decide when each card should appear again—right before you are likely to forget it.
+在扩展的「翻译服务」页或弹窗里切换。模型、API Key、请求地址这些参数由扩展内置，
+**不需要也不应该配置**。
 
-<div align="right">
+## 与上游 read-frog 的差异
 
-[![Back to top][back-to-top]](#readme-top)
+| 项 | 上游 | 本改版 |
+|---|---|---|
+| 翻译服务 | 20+ AI 服务商 + 免费通道 | 只有三个豆包引擎 |
+| 配置项 | 模型 / Base URL / API Key 等 | 全部移除，由服务本身决定 |
+| 豆包账号 | 无 | 新增「豆包账号」页（采集 / 探针 / 脱敏展示 / 导入） |
+| 视频字幕、TTS、自定义 AI 动作、单词卡、术语库、Google Drive 同步 | 有 | **入口已移除** |
+| 「仅译文」页面模式 | 全部服务可用 | **豆包不可用**（见下） |
 
-</div>
+### 为什么「仅译文」模式用不了
 
-<!-- ![][image-feat-bilingual] -->
+豆包这个端点是**纯文本**的，没有保留 HTML 标记的模式。「仅译文」模式会用
+`innerHTML` 回填 provider 输出，硬套会把页面标记弄坏，所以被主动禁用 ——
+这是**故意的，不是 bug**。想用「仅译文」请换 DeepL 等支持标记的 provider。
 
-### 🔄 [Bilingual / Translation Only][docs-tutorial]
+## 目录导览
 
-Switch seamlessly between two translation display modes. **Bilingual mode** shows the original text alongside its translation, perfect for learning and comparison. **Translation-only mode** replaces the original text entirely for a cleaner reading experience.
+```
+├── doubao-worker/                          Cloudflare Worker（OpenAI 兼容网关）
+├── NOTICE.md                               GPL 修改声明
+├── src/
+│   ├── utils/constants/doubao.ts           接口契约：错误码、语言码、场景号、引擎
+│   ├── types/doubao.ts                     消息层的场景号运行时校验
+│   ├── utils/doubao-auth/                  Cookie 采集 / 鉴权探针 / 导入
+│   ├── utils/host/translate/api/doubao/    翻译客户端
+│   │   ├── client.ts                       请求构造、响应分流、按 index 回填
+│   │   ├── sse.ts                          增量 SSE 解析（扛任意字节切分）
+│   │   ├── batching.ts                     分批（≤ 1 万字符且 ≤ 50 段）
+│   │   ├── scene.ts                        功能 → 数字场景号
+│   │   └── errors.ts                       错误码 → 人话
+│   ├── entrypoints/options/pages/doubao-account/   「豆包账号」设置页
+│   └── entrypoints/popup/components/       popup 的账号状态卡 / 服务切换器
+└── scripts/verify/                         契约对抗测试 + 真实 HTTP mock
+```
 
-The extension automatically re-translates all visible content when you switch modes while translation is active, ensuring a smooth transition without needing to refresh the page.
+## 用 Cloudflare Worker（OpenAI 兼容）
 
-<div align="right">
+`doubao-worker/` 把**同一个**豆包接口包装成 OpenAI 兼容的
+`/v1/chat/completions`，可以喂给 Cherry Studio、Chatbox、One API 等客户端：
 
-[![Back to top][back-to-top]](#readme-top)
+```bash
+cd doubao-worker
+npm install
+npx wrangler login
+npx wrangler deploy
+```
 
-</div>
+然后客户端填 `Base URL = https://<你的worker地址>/v1`、
+`API Key = 豆包完整 Cookie 串`、`Model = doubao-ai`。
 
-<!-- ![][image-feat-selection] -->
+详见 [`doubao-worker/README.md`](./doubao-worker/README.md)。
 
-### ✨ [Selection Translation][docs-tutorial]
+## 从源码构建
 
-Select any text on a webpage to reveal a smart toolbar with powerful options. **Translate** streams the translation in real-time. **Explain** provides detailed explanations tailored to your language level. **Speak** reads the text aloud using text-to-speech.
+需要 Node.js 与 pnpm（版本以 `package.json` 的 `packageManager` / `devEngines`
+字段为准）。
 
-The toolbar intelligently positions itself to stay within the viewport, supports drag interactions, and works across all websites. Perfect for quick lookups while reading.
+```bash
+pnpm install --frozen-lockfile
 
-<div align="right">
+pnpm build          # Chrome → .output/chrome-mv3
+pnpm zip            # Chrome 打包 → .output/*.zip
+pnpm zip:firefox    # Firefox（MV3）
+pnpm test           # 单元测试
+```
 
-[![Back to top][back-to-top]](#readme-top)
+跑豆包的**契约对抗测试**（用真实本机 HTTP mock，不依赖浏览器与网络）：
 
-</div>
+```bash
+pnpm exec vitest run --config scripts/verify/vitest.verify.config.ts
+```
 
-<!-- ![][image-feat-context] -->
+> 仓库自带 husky 钩子（pre-commit / pre-push）。在 Git Bash 等只能看到
+> `pnpm.cmd` 的环境里钩子会报 `pnpm: command not found`，此时用
+> `git commit --no-verify` / `git push --no-verify` 跳过，或先把 pnpm 加进 PATH。
 
-### 🧠 [Context-Aware Translation][docs-tutorial]
+## 排错
 
-Enable AI to understand the full context of what you're reading. When activated, Read Frog extracts the page title and a concise Markdown version of the page content, providing this context to the AI for more accurate, contextually-appropriate translations.
+| 现象 | 原因 | 处理 |
+|---|---|---|
+| `710012001 登录已过期` | Cookie 失效 | 「豆包账号」页重新点「获取 Cookie」 |
+| `710010202 系统错误` | 参数不合法（最常见是场景号传成字符串） | 扩展已本地拦截并退回默认场景 |
+| `710020202 插件错误` | 单次段数超过 100，或用了同步端点 | 保持每批 ≤ 50 段 |
+| `710020702` | `target_lang` 不是受支持的语言码 | 见 `SUPPORTED_LANGUAGES` |
+| 翻译不出来但也不报错 | 忽略了 SSE 的 `event:err` 帧 | 已修复；自行改代码时别只认 `event:json` |
+| 某几段没被翻译 | 单段超过 1 万字符被服务端静默截断 | 保持单段 ≤ 1 万字符 |
+| 「仅译文」模式选不了 | 豆包是纯文本端点 | 见上文，属预期行为 |
+| 点了翻译没反应 | 扩展未加载 / 未登录豆包 | 检查 `chrome://extensions` 与豆包账号状态 |
 
-This means technical terms get translated correctly within their domain, literary expressions maintain their nuance, and ambiguous phrases are interpreted based on the surrounding content rather than in isolation.
+## 已知限制
 
-<div align="right">
+- 依赖豆包**非公开**的内部接口，上游随时可能变更导致失效。
+- 单批 ≤ 50 段且 ≤ 1 万字符；单段超过 1 万字符会被服务端静默截断。
+- 只有 Chrome / Edge 构建产物，Firefox 需自行构建。
+- 登录态会过期，需要偶尔重新采集。
 
-[![Back to top][back-to-top]](#readme-top)
+## 许可与致谢
 
-</div>
+本仓库是 [read-frog](https://github.com/mengxi-ream/read-frog) 的修改版，
+遵循上游的 **GNU GPL v3.0**（见 [`LICENSE`](./LICENSE)）发布。
 
-<!-- ![][image-feat-subtitle] -->
+- 上游仓库：<https://github.com/mengxi-ream/read-frog>
+- 修改内容与日期：见 [`NOTICE.md`](./NOTICE.md)
 
-### 🎬 [Subtitle Translation][docs-tutorial]
+按 GPL 要求，**分发本仓库的编译产物时，其对应的完整源代码即为本仓库全部内容。**
 
-Translate YouTube subtitles directly in the video player. Watch foreign language content with translations displayed alongside the original subtitles, making video content accessible for language learning.
+感谢 read-frog 作者 [@mengxi-ream](https://github.com/mengxi-ream) 及所有贡献者。
 
-<div align="right">
+## 免责声明
 
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-<!-- ![][image-feat-tts] -->
-
-### 🔊 [Text-to-Speech (TTS)][docs-tutorial]
-
-Listen to any selected text with high-quality AI voices. Powered by **Edge TTS** — completely free, with 150+ voices across 80+ languages including Chinese, English, Japanese, Korean, and many more. Adjust rate, pitch, and volume to your preference.
-
-Automatic language detection (basic or LLM-powered) with per-language voice mapping ensures the right voice for every language. Smart sentence-aware chunking handles long text by splitting at natural boundaries and prefetching the next chunk for seamless playback. Perfect for pronunciation practice and auditory learning.
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-<!-- ![][image-feat-batch] -->
-
-### 📦 [Batch Requests][docs-tutorial]
-
-Save up to 70% on API costs with intelligent request batching. Read Frog groups multiple translation requests into single API calls, reducing overhead and token usage while maintaining translation quality.
-
-The system includes smart retry logic with exponential backoff and automatic fallback to individual requests if batch processing fails. All handled transparently in the background.
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-<!-- ![][image-feat-providers] -->
-
-### 🤖 [20+ AI Providers][docs-tutorial]
-
-Connect to 20+ AI providers through Vercel AI SDK: OpenAI, DeepSeek, Anthropic Claude, Google Gemini, xAI Grok, Groq, Mistral, Ollama, and many more. Configure custom endpoints, API keys, and model settings for each provider.
-
-Plus free translation options: Google Translate, Microsoft Translate, and DeepLX for cost-free basic translations.
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-## 🤝 Contribute
-
-Contributions of all types are more than welcome.
-
-1. Promote Read Frog to your friends and family.
-2. Report [issues][issues-link] and feedback.
-3. Contribute code.
-
-### Contribute Code
-
-Project Structure: [DeepWiki](https://deepwiki.com/mengxi-ream/read-frog)
-
-Ask AI to understand the project: [Dosu](https://app.dosu.dev/29569286-71ba-47dd-b038-c7ab1b9d0df7/documents)
-
-Check out the [Contribution Guide](https://readfrog.app/en/docs/code-contribution/contribution-guide) for more details.
-
-ReadFrog is dual-licensed under GPLv3 and a commercial license.
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for contributor licensing terms.
-
-<a href="https://github.com/mengxi-ream/read-frog/graphs/contributors">
-  <table>
-    <tr>
-      <th colspan="2">
-        <br>
-        <img src="https://contrib.rocks/image?repo=mengxi-ream/read-frog" alt="Read Frog contributors"><br>
-        <br>
-      </th>
-    </tr>
-    <!-- <tr>
-      <td>
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-recent-top-contributors/thumbnail.png?repo_id=967738751&image_size=auto&color_scheme=dark" width="373" height="auto">
-          <img alt="Top Contributors of mengxi-ream/read-frog - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-recent-top-contributors/thumbnail.png?repo_id=967738751&image_size=auto&color_scheme=light" width="373" height="auto">
-        </picture>
-      </td>
-      <td rowspan="2">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-last-28-days-stats/thumbnail.png?repo_id=967738751&image_size=4x7&color_scheme=dark" width="655" height="auto">
-          <img alt="Performance Stats of mengxi-ream/read-frog - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-last-28-days-stats/thumbnail.png?repo_id=967738751&image_size=auto&color_scheme=light" width="655" height="auto">
-        </picture>
-      </td>
-    </tr> -->
-  </table>
-</a>
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-## 📜 Commercial License Grant
-
-<img src="assets/tabbit.avif" alt="Tabbit" height="20" /> **Meituan Tabbit Browser Team**: Free license (at no cost) for closed-source commercial use, limited to v1.21.3 and earlier versions (commit [`724863f`](https://github.com/mengxi-ream/read-frog/commit/724863fdbc2d777766cada6c111235534ee03ca0)). Granted on March 3, 2026, 9:00 AM (Vancouver Time, UTC-8).
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-## ❤️ Sponsors
-
-Every donation helps us build a better language learning experience. Thank you for supporting our mission!
-
-[![Sponsors][sponsor-image]][sponsor-link]
-
-<div align="right">
-
-[![Back to top][back-to-top]](#readme-top)
-
-</div>
-
-<!-- LINK GROUP -->
-
-[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-[chrome-store-link]: https://chromewebstore.google.com/detail/read-frog-open-source-ai/modkelfkcfjpgbfmnbnllalkiogfofhb
-[chrome-users-shield]: https://img.shields.io/chrome-web-store/users/modkelfkcfjpgbfmnbnllalkiogfofhb?style=flat-square&label=Chrome%20Users&color=yellow&labelColor=black
-[chrome-version-shield]: https://img.shields.io/chrome-web-store/v/modkelfkcfjpgbfmnbnllalkiogfofhb?style=flat-square&label=Chrome%20Version&labelColor=black&color=yellow
-[contributors-link]: https://github.com/mengxi-ream/read-frog/graphs/contributors
-[contributors-shield]: https://img.shields.io/github/contributors/mengxi-ream/read-frog?style=flat-square&labelColor=black
-[crxsoso-link]: https://www.crxsoso.com/webstore/detail/modkelfkcfjpgbfmnbnllalkiogfofhb
-[chinese-shield]: https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-gray?style=flat-square
-[discord-link]: https://discord.gg/ej45e3PezJ
-[discord-shield]: https://img.shields.io/discord/1371229720942874646?style=flat-square&label=Discord&logo=discord&logoColor=white&color=5865F2&labelColor=black
-[discord-shield-badge]: https://img.shields.io/badge/chat-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=black
-[edge-store-link]: https://microsoftedge.microsoft.com/addons/detail/read-frog-open-source-a/cbcbomlgikfbdnoaohcjfledcoklcjbo
-[english-shield]: https://img.shields.io/badge/English-gray?style=flat-square
-[firefox-store-link]: https://addons.mozilla.org/firefox/addon/read-frog-open-ai-translator/
-[firefox-version-shield]: https://img.shields.io/amo/v/read-frog-open-ai-translator?style=flat-square&label=Firefox%20Version&labelColor=black&color=orange
-[firefox-users-shield]: https://img.shields.io/amo/users/read-frog-open-ai-translator?style=flat-square&label=Firefox%20Users&color=orange&labelColor=black
-[edge-users-shield]: https://img.shields.io/badge/dynamic/json?style=flat-square&logo=microsoft-edge&label=Edge%20Users&query=%24.activeInstallCount&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fcbcbomlgikfbdnoaohcjfledcoklcjbo&labelColor=black
-[edge-version-shield]: https://img.shields.io/badge/dynamic/json?style=flat-square&logo=microsoft-edge&label=Edge%20Version&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fcbcbomlgikfbdnoaohcjfledcoklcjbo&labelColor=black&prefix=v
-[extension-release-shield]: https://img.shields.io/github/package-json/v/mengxi-ream/read-frog?filename=package.json&style=flat-square&label=Latest%20Version&color=brightgreen&labelColor=black
-[github-release-link]: https://github.com/mengxi-ream/read-frog/releases
-[github-star-link]: https://github.com/mengxi-ream/read-frog/stargazers
-[image-banner]: /assets/banner.png
-[image-star]: ./assets/star.png
-[issues-link]: https://github.com/mengxi-ream/read-frog/issues
-[issues-shield]: https://img.shields.io/github/issues/mengxi-ream/read-frog?style=flat-square&labelColor=black
-[japanese-shield]: https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-gray?style=flat-square
-[korean-shield]: https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-gray?style=flat-square
-[last-commit-shield]: https://img.shields.io/github/last-commit/mengxi-ream/read-frog?style=flat-square&label=commit&labelColor=black
-[russian-shield]: https://img.shields.io/badge/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-gray?style=flat-square
-[sponsor-image]: https://cdn.jsdelivr.net/gh/mengxi-ream/static/sponsorkit/sponsors.svg
-[sponsor-link]: https://github.com/sponsors/mengxi-ream
-[sponsor-shield]: https://img.shields.io/github/sponsors/mengxi-ream?style=flat-square&label=Sponsor&color=EA4AAA&labelColor=black
-[spanish-shield]: https://img.shields.io/badge/Espa%C3%B1ol-gray?style=flat-square
-[star-history-link]: https://www.star-history.com/#mengxi-ream/read-frog&Timeline
-[star-history-shield]: https://img.shields.io/github/stars/mengxi-ream/read-frog?style=flat-square&label=stars&color=yellow&labelColor=black
-[traditional-chinese-shield]: https://img.shields.io/badge/%E7%B9%81%E9%AB%94%E4%B8%AD%E6%96%87-gray?style=flat-square
-[turkish-shield]: https://img.shields.io/badge/T%C3%BCrk%C3%A7e-gray?style=flat-square
-[vietnamese-shield]: https://img.shields.io/badge/Ti%E1%BA%BFng%20Vi%E1%BB%87t-gray?style=flat-square
-[website]: https://readfrog.app
-[wechat-link]: ./assets/wechat-account.jpg
-[wechat-shield-badge]: https://img.shields.io/badge/chat-WeChat-07C160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=black
-
-<!-- Feature docs link -->
-
-[docs-tutorial]: https://readfrog.app/docs
+本项目与字节跳动 / 豆包官方**无任何关联**。豆包翻译依赖未公开的内部接口，
+请使用你自己合法的豆包账号，并自行承担使用风险。
