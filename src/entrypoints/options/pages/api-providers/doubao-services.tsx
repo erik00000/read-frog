@@ -56,7 +56,7 @@ function getLoginView(record: DoubaoAuthRecord | null) {
     return {
       label: "已登录",
       className: "bg-emerald-500/15 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300",
-      hint: "豆包登录态有效，三个服务都能直接用。",
+      hint: "豆包登录检查已通过；翻译是否可用仍取决于接口状态及账号额度。",
     }
   }
   if (record.status === "expired") {
@@ -207,8 +207,8 @@ export function DoubaoServiceList() {
       </div>
 
       <p className="text-[13px] text-muted-foreground">
-        三个服务都走同一个豆包接口、共用同一份登录 Cookie，只是翻译引擎不同。模型、API Key、
-        请求地址等参数由扩展内置，不需要也不应该在这里配置。
+        这三个豆包服务共用同一份登录 Cookie，只是翻译引擎不同。 如需使用自己的 API
+        Key，请配置上方的第三方 API 翻译。
       </p>
     </div>
   )

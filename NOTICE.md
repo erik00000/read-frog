@@ -8,12 +8,12 @@ This repository is a **modified version** of
 same **GNU GPL v3.0** license as upstream. See `LICENSE`.
 
 - **上游 / Upstream**: https://github.com/mengxi-ream/read-frog
-- **修改日期 / Modification date**: 2026-10-07
+- **修改日期 / Modification date**: 2026-10-07、2026-11-13
 - **修改者 / Modified by**: 本仓库作者
 
 ## 修改内容 / What was changed
 
-新增**豆包（Doubao）原生翻译**，并把产品裁剪为只提供三个豆包翻译服务：
+新增**豆包（Doubao）原生翻译**，精简产品入口，并加入第三方 API 翻译：
 
 1. 新增豆包翻译客户端：`src/utils/host/translate/api/doubao/`
    - 调用 `POST https://www.doubao.com/samantha/plugin/stream_article_translate`
@@ -27,6 +27,9 @@ same **GNU GPL v3.0** license as upstream. See `LICENSE`.
    （对应 `translate_service` = `"0"` / `"1"` / `"3"`）
 6. 为存量配置提供一次性迁移：`src/utils/config/default-translate-provider.ts`
 7. 新增契约对抗测试与 mock：`scripts/verify/`
+8. 新增第三方 OpenAI 兼容 Chat Completions 配置、测试翻译和默认服务切换。
+9. 新增模型列表获取与下拉选择，按使用偏好优先推荐实际返回的 Terra 模型；默认隐藏密钥。
+10. 新增第三方 API 请求、模型列表、配置持久化和交互测试，更新使用文档。
 
 完整的对应源代码即本仓库全部内容。
 
