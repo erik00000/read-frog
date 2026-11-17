@@ -12,6 +12,7 @@ import { TooltipProvider } from "@/components/ui/base-ui/tooltip"
 import { baseThemeModeAtom } from "@/utils/atoms/theme"
 import { getLocalConfig } from "@/utils/config/storage"
 import { APP_NAME } from "@/utils/constants/app"
+import { watchContentScriptContext } from "@/utils/content-script-lifecycle"
 import { primeGlossaryMatcher } from "@/utils/glossary/active-matcher"
 import { initI18n } from "@/utils/i18n"
 import { LocaleBoundary } from "@/utils/i18n/locale-boundary"
@@ -88,6 +89,10 @@ async function mountSelectionUI(ctx: ContentScriptContext) {
     },
   })
 
+  if (ctx.isInvalid) {
+    ui.remove()
+    return
+  }
   ui.mount()
 }
 
@@ -95,6 +100,8 @@ export default defineContentScript({
   matches: ["*://*/*", "file:///*"],
   cssInjectionMode: "ui",
   async main(ctx) {
+    watchContentScriptContext(ctx)
+    if (ctx.isInvalid) return
     // Prevent double injection (manifest-based + programmatic injection)
     if (window.__READ_FROG_SELECTION_INJECTED__) return
     window.__READ_FROG_SELECTION_INJECTED__ = true
@@ -136,6 +143,7 @@ export default defineContentScript({
 
     await initI18n(config?.uiLanguage)
 
-    void mountSelectionUI(ctx)
+    if (ctx.isInvalid) return
+    await mountSelectionUI(ctx)
   },
 })

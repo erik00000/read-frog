@@ -34,8 +34,8 @@ export default defineConfig({
       }
     : {},
   manifest: ({ mode, browser }) => ({
-    name: "__MSG_extName__",
-    description: "__MSG_extDescription__",
+    name: "豆包翻译 · 阅读助手",
+    description: "网页双语、划词与输入翻译。支持豆包账号和自定义 API。",
     default_locale: "en",
     // Fixed extension ID for development
     ...(mode === "development" &&
@@ -90,8 +90,23 @@ export default defineConfig({
     }),
   }),
   zip: {
-    includeSources: ["**/*", ".env.production"],
-    excludeSources: ["docs/**/*", "assets/**/*", "repos/**/*", "readmes/**/*"],
+    includeSources: ["**/*"],
+    excludeSources: [
+      "docs/**/*",
+      "assets/**/*",
+      "repos/**/*",
+      "readmes/**/*",
+      // Source archives must never carry local credentials or browser exports.
+      "**/.env",
+      "**/.env.*",
+      "**/.dev.vars*",
+      "**/.wrangler/**",
+      "**/*.har",
+      "**/cookies.txt",
+      "**/cookies.json",
+      "**/cookie.txt",
+      "**/cookie.json",
+    ],
   },
   hooks: {
     "vite:build:extendConfig": (entrypoints, viteConfig) => {

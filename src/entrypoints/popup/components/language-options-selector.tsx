@@ -25,7 +25,7 @@ import { i18n } from "@/utils/i18n"
 import { getLanguageLabel, getLanguageName } from "@/utils/language-labels"
 
 const langSelectorTriggerClasses =
-  "!h-14 w-30 rounded-lg shadow-xs pr-2 gap-1 justify-between bg-transparent"
+  "!h-14 w-[138px] rounded-lg shadow-xs pr-2 gap-1 justify-between bg-transparent"
 
 const langSelectorContentClasses = "flex flex-col items-start text-base font-medium min-w-0 flex-1"
 
@@ -100,10 +100,10 @@ export default function LanguageOptionsSelector() {
 
   const sourceLangLabel =
     language.sourceCode === "auto"
-      ? `${currentSourceItem?.label ?? getLanguageLabel(detectedCode)} (auto)`
-      : (currentSourceItem?.label ?? getLanguageLabel(language.sourceCode))
+      ? getLanguageName(detectedCode)
+      : getLanguageName(language.sourceCode)
 
-  const targetLangLabel = currentTargetItem?.label ?? getLanguageLabel(language.targetCode)
+  const targetLangLabel = getLanguageName(language.targetCode)
 
   return (
     <div className="flex items-center justify-between">

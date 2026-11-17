@@ -57,7 +57,7 @@ function HydrateAtoms({
 
 async function initApp() {
   const root = document.getElementById("root")!
-  root.className = "text-base antialiased w-[320px] bg-background"
+  root.className = "text-base antialiased w-[360px] bg-background"
 
   const [configValue, themeMode, activeTab] = await Promise.all([
     getLocalConfig(),
@@ -71,7 +71,7 @@ async function initApp() {
 
   await initI18n(config.uiLanguage)
 
-  const tabId = activeTab[0]!.id
+  const tabId = activeTab[0]?.id
 
   let isPageTranslated: boolean = false
   if (tabId) {

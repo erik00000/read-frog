@@ -1,40 +1,46 @@
-import { Icon } from "@iconify/react"
-import { i18n } from "@/utils/i18n"
+import { ArrowUpRight, Settings2 } from "lucide-react"
+import { browser } from "#imports"
+import { DoubaoBrand } from "@/components/doubao/brand"
 import { openOptionsPage } from "@/utils/navigation"
 import { version } from "../../../package.json"
 import { DoubaoAccountStatus } from "./components/doubao-account-status"
 import { DoubaoServiceSwitcher } from "./components/doubao-service-switcher"
-import { MoreMenu } from "./components/more-menu"
+import LanguageOptionsSelector from "./components/language-options-selector"
 import TranslateButton from "./components/translate-button"
 
-/**
- * 二次开发精简版：只剩「豆包账号状态 + 三个翻译服务切换 + 当前页翻译开关」，
- * 以及底部一行工具条。模型选择、内置 AI 用量、账号订阅等入口都已下线。
- */
-function App() {
+export default function App() {
   return (
-    <>
-      <div className="flex flex-col gap-4 bg-background px-6 pt-5 pb-4">
-        <DoubaoAccountStatus />
-        <DoubaoServiceSwitcher />
-        <TranslateButton className="w-full" />
-      </div>
-      <div className="flex items-center justify-between bg-neutral-200 px-2 py-1 dark:bg-neutral-800">
+    <div className="bg-background text-foreground">
+      <header className="flex items-center justify-between border-b px-5 py-4">
+        <DoubaoBrand />
         <button
           type="button"
-          className="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 hover:bg-neutral-300 dark:hover:bg-neutral-700"
-          onClick={() => {
-            void openOptionsPage()
-          }}
+          aria-label="打开设置"
+          title="打开设置"
+          className="rounded-xl p-2 text-muted-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-emerald-600"
+          onClick={() => void openOptionsPage()}
         >
-          <Icon icon="tabler:settings" className="size-4" strokeWidth={1.6} />
-          <span className="text-[13px] font-medium">{i18n.t("popup.options")}</span>
+          <Settings2 className="size-5" />
         </button>
-        <span className="text-sm text-neutral-500 dark:text-neutral-400">{version}</span>
-        <MoreMenu />
-      </div>
-    </>
+      </header>
+      <main className="flex flex-col gap-4 p-5">
+        <DoubaoAccountStatus />
+        <LanguageOptionsSelector />
+        <DoubaoServiceSwitcher />
+        <TranslateButton className="h-11 w-full rounded-xl bg-emerald-600 text-sm font-medium text-white hover:bg-emerald-700" />
+      </main>
+      <footer className="flex items-center justify-between border-t px-5 py-3 text-xs text-muted-foreground">
+        <button
+          type="button"
+          className="flex items-center gap-1 hover:text-foreground"
+          onClick={() =>
+            void browser.tabs.create({ url: browser.runtime.getURL("/translation-hub.html") })
+          }
+        >
+          打开翻译中心 <ArrowUpRight className="size-3.5" />
+        </button>
+        <span>v{version}</span>
+      </footer>
+    </div>
   )
 }
-
-export default App

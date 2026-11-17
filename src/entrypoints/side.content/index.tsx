@@ -15,6 +15,7 @@ import { baseThemeModeAtom } from "@/utils/atoms/theme"
 import { getLocalConfig } from "@/utils/config/storage"
 import { APP_NAME } from "@/utils/constants/app"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"
+import { watchContentScriptContext } from "@/utils/content-script-lifecycle"
 import { initI18n } from "@/utils/i18n"
 import { LocaleBoundary } from "@/utils/i18n/locale-boundary"
 import { protectSelectAllShadowRoot } from "@/utils/select-all"
@@ -52,6 +53,8 @@ export default defineContentScript({
   matches: ["*://*/*", "file:///*"],
   cssInjectionMode: "ui",
   async main(ctx) {
+    watchContentScriptContext(ctx)
+    if (ctx.isInvalid) return
     const config = (await getLocalConfig()) ?? DEFAULT_CONFIG
 
     // Check global site control
@@ -124,6 +127,10 @@ export default defineContentScript({
       },
     })
 
+    if (ctx.isInvalid) {
+      ui.remove()
+      return
+    }
     ui.mount()
   },
 })

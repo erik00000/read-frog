@@ -1,5 +1,6 @@
-import { Icon } from "@iconify/react"
 import { useAtomValue, useSetAtom } from "jotai"
+import { Check, Circle } from "lucide-react"
+import { useState } from "react"
 import { configAtom, writeConfigAtom } from "@/utils/atoms/config"
 import {
   DOUBAO_PROVIDER_DESCRIPTIONS,
@@ -18,6 +19,7 @@ export function DoubaoServiceSwitcher() {
   const config = useAtomValue(configAtom)
   const writeConfig = useSetAtom(writeConfigAtom)
   const activeProviderId = config.pageTranslation.providerId
+  const [error, setError] = useState<string | null>(null)
 
   const services = DOUBAO_PROVIDER_TYPES.map((provider) => ({
     id: getDoubaoProviderId(provider),
@@ -36,20 +38,33 @@ export function DoubaoServiceSwitcher() {
       ]
     : services
 
-  const selectService = (providerId: string) => {
+  const selectService = async (providerId: string) => {
     if (providerId === activeProviderId) return
-    void writeConfig(
-      buildFeatureProviderPatch({
-        pageTranslation: providerId,
-        selectionTranslation: providerId,
-        inputTranslation: providerId,
-      }),
-    )
+    setError(null)
+    try {
+      await writeConfig(
+        buildFeatureProviderPatch({
+          pageTranslation: providerId,
+          selectionTranslation: providerId,
+          inputTranslation: providerId,
+        }),
+      )
+    } catch {
+      setError("服务切换失败，请重新打开扩展后再试。")
+    }
   }
 
   return (
-    <div className="flex flex-col gap-1.5">
-      <span className="px-1 text-[13px] font-medium">翻译服务</span>
+    <div className="flex flex-col gap-2">
+      <div className="flex justify-between text-xs text-muted-foreground">
+        <span>翻译服务</span>
+        <span>点击切换</span>
+      </div>
+      {error && (
+        <p role="alert" className="text-xs text-destructive">
+          {error}
+        </p>
+      )}
       <div className="flex flex-col gap-1">
         {availableServices.map((service) => {
           const active = service.id === activeProviderId
@@ -59,21 +74,24 @@ export function DoubaoServiceSwitcher() {
               type="button"
               aria-pressed={active}
               onClick={() => {
-                selectService(service.id)
+                void selectService(service.id)
               }}
               className={cn(
-                "flex w-full cursor-pointer items-start gap-2 rounded-lg border px-2.5 py-2 text-left transition-colors",
+                "flex w-full cursor-pointer items-start gap-2 rounded-xl border px-3 py-2.5 text-left transition-colors",
                 active
-                  ? "border-accent-blue bg-accent-blue/8"
-                  : "border-transparent hover:bg-muted",
+                  ? "border-emerald-600/50 bg-emerald-500/8"
+                  : "border-border/70 hover:border-emerald-600/30 hover:bg-muted",
               )}
             >
-              <Icon
-                icon={active ? "tabler:circle-check-filled" : "tabler:circle"}
-                className={cn("mt-0.5 size-4 shrink-0", active && "text-accent-blue")}
-              />
+              {active ? (
+                <Check className="mt-0.5 size-4 shrink-0 text-emerald-600" />
+              ) : (
+                <Circle className="mt-0.5 size-4 shrink-0 text-muted-foreground/50" />
+              )}
               <span className="flex min-w-0 flex-col gap-0.5">
-                <span className="text-[13px] font-medium">{service.name}</span>
+                <span className="text-[13px] font-medium">
+                  {service.name.replace("豆包翻译 · ", "")}
+                </span>
                 <span className="text-[12px] leading-4 text-muted-foreground">
                   {service.description}
                 </span>

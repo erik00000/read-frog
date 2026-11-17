@@ -117,7 +117,7 @@ export function DoubaoServiceList() {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="doubao-services-grid">
         {DOUBAO_PROVIDER_TYPES.map((provider) => {
           const id = getDoubaoProviderId(provider)
           const entry = providersConfig.find((item) => item.id === id) ?? null
@@ -135,16 +135,19 @@ export function DoubaoServiceList() {
               key={provider}
               data-provider-id={id}
               className={cn(
-                "flex flex-col gap-3 rounded-xl border px-4 py-3.5",
-                isDefault && "border-accent-blue bg-accent-blue/6",
+                "flex flex-col gap-5 rounded-2xl border bg-background p-5 transition-colors",
+                isDefault && "border-emerald-600/60 bg-emerald-500/5",
               )}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 flex-col gap-1">
                   <span className="flex flex-wrap items-center gap-2 text-sm font-medium">
-                    {DOUBAO_PROVIDER_LABELS[provider]}
+                    {DOUBAO_PROVIDER_LABELS[provider].replace("豆包翻译 · ", "")}
                     {isDefault && (
-                      <Badge variant="secondary" className="bg-accent-blue/15 font-normal">
+                      <Badge
+                        variant="secondary"
+                        className="bg-emerald-500/15 font-normal text-emerald-700 dark:text-emerald-300"
+                      >
                         当前默认
                       </Badge>
                     )}
@@ -159,7 +162,7 @@ export function DoubaoServiceList() {
                   </span>
                 </div>
                 <Switch
-                  aria-label={`${DOUBAO_PROVIDER_LABELS[provider]} 启用`}
+                  aria-label={`${DOUBAO_PROVIDER_LABELS[provider].replace("豆包翻译 · ", "")} 启用`}
                   checked={enabled}
                   disabled={!canToggle}
                   onCheckedChange={(checked) => {
@@ -176,7 +179,7 @@ export function DoubaoServiceList() {
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="mt-auto flex flex-col items-start gap-3 border-t pt-4">
                 <span className="text-[13px] text-muted-foreground">
                   {assignedFeatures.length === 0
                     ? "未分配给任何功能"
@@ -187,6 +190,7 @@ export function DoubaoServiceList() {
                     type="button"
                     variant="outline"
                     size="sm"
+                    disabled={!enabled}
                     onClick={() => {
                       void writeConfig(
                         buildFeatureProviderPatch({
@@ -208,7 +212,7 @@ export function DoubaoServiceList() {
 
       <p className="text-[13px] text-muted-foreground">
         这三个豆包服务共用同一份登录 Cookie，只是翻译引擎不同。 如需使用自己的 API
-        Key，请配置上方的第三方 API 翻译。
+        Key，请配置下方的第三方 API 翻译。
       </p>
     </div>
   )

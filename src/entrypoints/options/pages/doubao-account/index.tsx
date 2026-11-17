@@ -149,9 +149,21 @@ export function DoubaoAccountPage() {
   return (
     <PageLayout
       title="豆包账号"
-      description="翻译请求只用 www.doubao.com 的登录 Cookie 鉴权，没有 a_bogus / msToken 之类的签名参数。这里负责把登录态采集进扩展。"
+      description="在当前浏览器登录豆包，再获取登录状态。三个豆包翻译引擎共用这个账号。"
       innerClassName="flex flex-col gap-10"
     >
+      <ol className="grid gap-4 rounded-2xl border bg-background p-5 text-sm sm:grid-cols-3">
+        {["打开豆包，完成登录", "返回这里，获取 Cookie", "选择服务，开始翻译"].map(
+          (step, index) => (
+            <li key={step} className="flex items-center gap-3">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                {index + 1}
+              </span>
+              {step}
+            </li>
+          ),
+        )}
+      </ol>
       <Card className={cn("border", status.className)}>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-base">
@@ -212,8 +224,8 @@ export function DoubaoAccountPage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>清除扩展里保存的登录态？</AlertDialogTitle>
                   <AlertDialogDescription>
-                    只会删掉扩展保存的 Cookie 串和校验结果，不会动浏览器里豆包自己的登录
-                    Cookie。清除后翻译请求会回到「未登录」状态，需要重新获取。
+                    只会删除扩展保存的 Cookie
+                    串和校验结果，不会退出浏览器里的豆包账号。浏览器仍然登录时，翻译请求可能继续使用它的登录态。
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -273,9 +285,11 @@ export function DoubaoAccountPage() {
         </Card>
       )}
 
-      <div className="flex flex-col gap-4">
+      <details className="space-y-4 rounded-2xl border bg-background p-5">
+        <summary className="cursor-pointer text-sm font-medium">
+          登录详情 · 已保存的 Cookie（脱敏）
+        </summary>
         <div className="flex flex-col gap-1">
-          <h2 className="text-sm font-medium">已保存的 Cookie（脱敏）</h2>
           <p className="text-[13px] text-muted-foreground">
             只显示名字和掩码后的片段，完整值不会出现在这个页面上。
           </p>
@@ -291,11 +305,11 @@ export function DoubaoAccountPage() {
             <MaskedCookieList entries={masked} />
           </>
         )}
-      </div>
+      </details>
 
-      <div className="flex flex-col gap-4">
+      <details className="space-y-4 rounded-2xl border bg-background p-5">
+        <summary className="cursor-pointer text-sm font-medium">高级设置 · 手动导入</summary>
         <div className="flex flex-col gap-1">
-          <h2 className="text-sm font-medium">手动导入</h2>
           <p className="text-[13px] text-muted-foreground">
             在无法直接读取浏览器 Cookie 的场合（豆包 PC 客户端、另一台机器）用粘贴方式导入。
           </p>
@@ -305,7 +319,7 @@ export function DoubaoAccountPage() {
             void reload()
           }}
         />
-      </div>
+      </details>
     </PageLayout>
   )
 }

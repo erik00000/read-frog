@@ -1,5 +1,9 @@
 import type { ZodSchema } from "zod"
 import { storage } from "#imports"
+import {
+  isExtensionContextAlive,
+  isExtensionContextInvalidatedError,
+} from "@/utils/error/extension-context"
 import { isNonNullish } from "@/utils/utils"
 
 export const storageAdapter = {
@@ -29,6 +33,13 @@ export const storageAdapter = {
     const unwatch = storage.watch<T>(`local:${key}`, (newValue) => {
       if (isNonNullish(newValue)) callback(newValue)
     })
-    return unwatch
+    return () => {
+      if (!isExtensionContextAlive()) return
+      try {
+        unwatch()
+      } catch (error) {
+        if (!isExtensionContextInvalidatedError(error)) throw error
+      }
+    }
   },
 }

@@ -72,7 +72,7 @@ export function DoubaoAccountStatus() {
       onClick={() => {
         void openOptionsPage({ route: "/doubao-account" })
       }}
-      className="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-1 py-1 text-left hover:bg-muted"
+      className="flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border border-border/70 bg-muted/35 px-3 py-3 text-left hover:bg-muted"
     >
       <span className="flex min-w-0 items-center gap-1.5 text-[13px] font-medium">
         <Icon icon="tabler:user-circle" className="size-4 shrink-0 text-muted-foreground" />

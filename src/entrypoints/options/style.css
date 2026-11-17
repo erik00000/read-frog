@@ -1,4 +1,48 @@
 body {
-  /* Chrome set the font to 75% of the default size */
-  font-size: initial; /* reset to 16px */
+  font-size: initial;
+}
+.doubao-settings {
+  --rf-primary: #087f5b;
+  --rf-primary-foreground: white;
+  background: #f7f9f8;
+}
+.dark .doubao-settings {
+  --rf-primary: #087f5b;
+  --rf-primary-foreground: white;
+  background: #131918;
+}
+.doubao-settings > .mx-auto {
+  max-width: 1160px;
+}
+.doubao-settings header h1 {
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  font-size: 30px;
+}
+.doubao-settings header p {
+  max-width: 640px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+.doubao-settings [data-slot="card"] {
+  border-radius: 18px;
+  box-shadow: none;
+}
+[data-sidebar="menu-button"][data-active] {
+  background: #e6f4ed;
+  color: #087f5b;
+}
+.dark [data-sidebar="menu-button"][data-active] {
+  background: #183d30;
+  color: #86dfba;
+}
+.doubao-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 1100px) {
+  .doubao-services-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -12,7 +12,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <>
       <AppSidebar />
-      <SidebarInset className="min-w-0">
+      <SidebarInset className="doubao-settings min-w-0">
         <NarrowTopBar />
         {children}
       </SidebarInset>

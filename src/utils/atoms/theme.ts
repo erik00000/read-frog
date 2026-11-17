@@ -2,6 +2,10 @@ import type { ThemeMode } from "@/types/config/theme"
 import { atom } from "jotai"
 import { DEFAULT_THEME_MODE, themeModeSchema } from "@/types/config/theme"
 import { THEME_STORAGE_KEY } from "../constants/config"
+import {
+  isExtensionContextAlive,
+  isExtensionContextInvalidatedError,
+} from "../error/extension-context"
 import { logger } from "../logger"
 import { storageAdapter } from "./storage-adapter"
 
@@ -24,23 +28,61 @@ export const themeModeAtom = atom(
 )
 
 baseThemeModeAtom.onMount = (setAtom: (newValue: ThemeMode) => void) => {
-  void storageAdapter
-    .get<ThemeMode>(THEME_STORAGE_KEY, DEFAULT_THEME_MODE, themeModeSchema)
-    .then(setAtom)
-  const unwatch = storageAdapter.watch<ThemeMode>(THEME_STORAGE_KEY, setAtom)
+  let active = true
+  let reading = false
+  let unwatch: (() => void) | undefined
 
-  const handleVisibilityChange = () => {
-    if (document.visibilityState === "visible") {
-      logger.info("baseThemeModeAtom onMount handleVisibilityChange when: ", new Date())
-      void storageAdapter
-        .get<ThemeMode>(THEME_STORAGE_KEY, DEFAULT_THEME_MODE, themeModeSchema)
-        .then(setAtom)
+  const stop = () => {
+    if (!active) return
+    active = false
+    document.removeEventListener("visibilitychange", handleVisibilityChange)
+    try {
+      unwatch?.()
+    } catch (error) {
+      if (!isExtensionContextInvalidatedError(error))
+        logger.error("Theme listener cleanup failed", error)
     }
   }
-  document.addEventListener("visibilitychange", handleVisibilityChange)
 
-  return () => {
-    unwatch()
-    document.removeEventListener("visibilitychange", handleVisibilityChange)
+  async function refresh() {
+    if (!active || reading) return
+    if (!isExtensionContextAlive()) {
+      stop()
+      return
+    }
+    reading = true
+    try {
+      const value = await storageAdapter.get<ThemeMode>(
+        THEME_STORAGE_KEY,
+        DEFAULT_THEME_MODE,
+        themeModeSchema,
+      )
+      if (active && isExtensionContextAlive()) setAtom(value)
+    } catch (error) {
+      if (isExtensionContextInvalidatedError(error)) stop()
+      else logger.error("Failed to read theme from storage", error)
+    } finally {
+      reading = false
+    }
   }
+
+  function handleVisibilityChange() {
+    if (document.visibilityState === "visible") void refresh()
+  }
+
+  if (!isExtensionContextAlive()) return stop
+  try {
+    unwatch = storageAdapter.watch<ThemeMode>(THEME_STORAGE_KEY, (value) => {
+      if (active) setAtom(value)
+    })
+  } catch (error) {
+    if (isExtensionContextInvalidatedError(error)) {
+      stop()
+      return stop
+    }
+    throw error
+  }
+  document.addEventListener("visibilitychange", handleVisibilityChange)
+  void refresh()
+  return stop
 }

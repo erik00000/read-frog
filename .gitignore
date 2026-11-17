@@ -47,3 +47,13 @@ scripts/output/
 
 reference/
 .gstack/
+
+# Local credentials, Worker state, and browser exports
+.dev.vars
+.dev.vars.*
+.wrangler/
+*.har
+cookies.txt
+cookies.json
+cookie.txt
+cookie.json

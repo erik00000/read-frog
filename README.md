@@ -41,10 +41,13 @@ read-frog 原本是一个 AI 语言学习 / 沉浸式翻译扩展。这个改版
 > Firefox 需要自行重新构建（见下方「从源码构建」）。
 
 1. 到 [Releases](https://github.com/erik00000/read-frog/releases) 下载
-   `read-frog-doubao-chrome-mv3-1.47.4.7z`，解压到任意目录
+   `read-frog-doubao-chrome-mv3-1.47.5.zip`，解压到任意目录
 2. Chrome 打开 `chrome://extensions/`（Edge 是 `edge://extensions/`）
 3. 打开右上角 **开发者模式**
 4. 点 **加载已解压的扩展程序**，选择解压出来的 `chrome-mv3` 目录
+
+发布包仅包含扩展程序文件，不包含你的 Cookie、个人 API Key 或浏览器配置。
+首次使用需要登录自己的豆包账号，或自行配置第三方服务；原目录覆盖升级会保留浏览器中已有的设置。
 
 ## 使用第三方 API 翻译
 
@@ -184,6 +187,17 @@ pnpm exec vitest run --config scripts/verify/vitest.verify.config.ts
 > `git commit --no-verify` / `git push --no-verify` 跳过，或先把 pnpm 加进 PATH。
 
 ## 排错
+
+### 更新后出现 `Extension context invalidated`
+
+这是扩展重载后，旧网页里的脚本仍在调用已经失效的扩展环境。它本身不表示豆包 Cookie 过期。
+
+1. 在 `chrome://extensions` 找到本扩展，点卡片上的重新加载按钮。
+2. 刷新更新前已经打开的网页，让新版脚本重新注入。
+3. 打开扩展的「错误」页，清除历史记录后再观察；旧记录不会自动消失。
+
+1.47.5 已为主题存储读取增加失效处理，并在环境失效时清理旧页面上的界面、事件和定时器。
+本版同时更新了豆包弹窗、服务卡片和账号页布局，保留第三方 API 设置。
 
 | 现象                     | 原因                                   | 处理                                                |
 | ------------------------ | -------------------------------------- | --------------------------------------------------- |

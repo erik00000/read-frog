@@ -125,11 +125,11 @@ export function ThirdPartyService() {
 
   return (
     <section
-      className="flex flex-col gap-4 rounded-xl border px-4 py-4"
+      className="flex flex-col gap-4 rounded-2xl border bg-background p-6"
       aria-label="第三方 API 翻译"
     >
       <div className="flex flex-wrap items-center gap-2">
-        <h2 className="text-sm font-medium">第三方 API 翻译</h2>
+        <h2 className="text-base font-semibold">第三方 API 翻译</h2>
         {isDefault && <Badge variant="secondary">当前默认</Badge>}
       </div>
       <p className="text-[13px] text-muted-foreground">

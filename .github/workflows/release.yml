@@ -21,6 +21,9 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    # Fork releases are uploaded after a local credential scan; keep the upstream
+    # Changesets/Discord pipeline scoped to the upstream repository.
+    if: github.repository == 'mengxi-ream/read-frog'
     name: Release Extension
     runs-on: ubuntu-latest
     env:
